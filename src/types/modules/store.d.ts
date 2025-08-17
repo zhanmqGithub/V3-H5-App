@@ -3,7 +3,7 @@
  */
 interface UserStoreState {
   token: string
-  userInfo: UserInfo
-  roles: string[]
+  userInfo: UserInfo | Record<string, unknown>
   tabBarActive: string
+  departs: Depart[]
 }

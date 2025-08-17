@@ -65,6 +65,7 @@ const varletGlobalStyleVars = ref({
   '--divider-color': '#f4f5fa',
   '--table-thead-th-text-align': 'center',
   '--table-tbody-td-text-align': 'center',
+  '--field-decorator-line-border-radius': '1rem',
 })
 /**
  * 用户全局存储

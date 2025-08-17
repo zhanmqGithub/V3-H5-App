@@ -97,10 +97,9 @@ router.beforeEach((to, from, next) => {
     if (userStore.$state.token) {
       next()
     } else {
-      // router.replace({
-      //   path: '/login-view',
-      // })
-      next()
+      router.replace({
+        path: '/login-view',
+      })
     }
   }
 })

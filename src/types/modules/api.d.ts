@@ -1,7 +1,7 @@
 /**
  * 接口响应
  */
-interface Result<T> {
+interface Result<T = unknown> {
   /**
    * 响应编码
    */

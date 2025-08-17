@@ -20,12 +20,17 @@ import '@varlet/ui/es/style'
  * 导入自定义全局组件
  */
 import NavBar from '@/views/components/NavBar.vue'
-import VConsole from 'vconsole'
+import eruda from 'eruda'
 /**
- * 非生产环境开启 VConsole
+ * 非生产环境开启 eruda （控制台工具）
  */
-if (import.meta.env.VITE_VCONSOLE === 'true') {
-  new VConsole({ theme: 'dark' })
+if (import.meta.env.VITE_CONSOLE_WINDOW === 'true') {
+  eruda.init({
+    useShadowDom: true,
+    defaults: {
+      theme: 'dark',
+    },
+  })
 }
 const app = createApp(App)
 /**
