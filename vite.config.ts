@@ -39,6 +39,14 @@ export default defineConfig({
   },
   build: {
     // target: ['chrome64', 'edge79', 'firefox67', 'safari11.1'],
-    rollupOptions: {},
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // 忽略eruda使用eval函数的警告
+        if (warning.code === 'EVAL' && warning.id?.includes('eruda')) {
+          return
+        }
+        warn(warning)
+      },
+    },
   },
 })

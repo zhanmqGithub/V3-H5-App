@@ -1,3 +1,29 @@
+<script lang="ts" setup>
+import { logout } from '@/api/login/index'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user'
+import { Snackbar, Dialog } from '@varlet/ui'
+const router = useRouter()
+const userStore = useUserStore()
+const handleLogout = () => {
+  Dialog({
+    title: '提示',
+    message: '请确认是否退出登录？',
+    onConfirm: async () => {
+      try {
+        const res = await logout()
+        Snackbar.success(res)
+        userStore.clearUser()
+        router.replace({
+          path: '/login-view',
+        })
+      } catch (error) {
+        console.log('error', error)
+      }
+    },
+  })
+}
+</script>
 <template>
   <div>
     <NavBar title="我的" :back="false"></NavBar>
@@ -46,7 +72,9 @@
         </div>
         <var-divider dashed />
       </var-paper>
-      <var-button text text-color="#3673c8" size="large" class="w-full mt-4">退出登录</var-button>
+      <var-button text text-color="#3673c8" size="large" class="w-full mt-4" @click="handleLogout">
+        退出登录
+      </var-button>
     </div>
   </div>
 </template>

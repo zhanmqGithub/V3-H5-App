@@ -12,18 +12,23 @@ import {
 } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { preventZoom, onPlusready } from './utils/document-utils'
 import { Snackbar } from '@varlet/ui'
-import { preventZoom } from '@/utils/document-utils'
-preventZoom()
+
 /**
  * 获取路由实例
  */
 const router = useRouter()
 /**
+ * 获取当前路由实例
+ */
+const route = useRoute()
+
+/**
  * 记录返回按钮触发时间
  */
-let backbuttonTriggerTime: number = new Date().getTime()
-document.addEventListener('plusready', () => {
+let backbuttonTriggerTime: number = 0
+onPlusready(() => {
   plus.navigator.setStatusBarStyle('dark')
   plus.navigator.setStatusBarBackground('#FFFFFF')
   // 监听返回键事件
@@ -32,7 +37,7 @@ document.addEventListener('plusready', () => {
     //TabBar页面1秒内连续触发2次即退出App
     if (route.meta.showTabBar) {
       const currentTriggerTime = new Date().getTime()
-      if (currentTriggerTime - backbuttonTriggerTime < 1000 * 2) {
+      if (backbuttonTriggerTime && currentTriggerTime - backbuttonTriggerTime < 1000 * 2) {
         plus.runtime.quit()
       } else {
         backbuttonTriggerTime = currentTriggerTime
@@ -43,11 +48,7 @@ document.addEventListener('plusready', () => {
     }
   })
 })
-
-/**
- * 获取当前路由实例
- */
-const route = useRoute()
+preventZoom()
 /**
  * varlet 全局样式变量
  */

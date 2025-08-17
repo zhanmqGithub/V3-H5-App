@@ -8,9 +8,15 @@ import type {
 import { Snackbar, Dialog } from '@varlet/ui'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user' // 假设你有Vuex/Pinia store
+import SignMd5Utils from '@/utils/sign-md5-utils'
+import { HttpConfigEnum } from '@/config/app'
+import toolUtils from '@/utils/tool-utils'
 
 // 扩展AxiosResponse类型
 type ExtendedAxiosResponse<T = unknown> = AxiosResponse<Result<T>>
+interface ParamObject {
+  [key: string]: string | number | boolean | ParamObject | (string | number | boolean)[]
+}
 
 // 创建axios实例时指定类型
 const axiosConfig: CreateAxiosDefaults<Result> = {
@@ -25,11 +31,21 @@ const service = axios.create(axiosConfig)
 
 // 请求拦截器
 service.interceptors.request.use(
-  (config: InternalAxiosRequestConfig<Result>): InternalAxiosRequestConfig<Result> => {
+  (config: InternalAxiosRequestConfig<ParamObject>): InternalAxiosRequestConfig<ParamObject> => {
     const userStore = useUserStore()
     const token = userStore.$state.token as string | null
+    config.headers[HttpConfigEnum.TIMESTAMP] = SignMd5Utils.getTimestamp()
+    config.headers[HttpConfigEnum.Sign] = SignMd5Utils.getSign(
+      import.meta.env.VITE_SIGNATURE_SECRET,
+      config.url as string,
+      toolUtils.deepClone(config.params),
+      toolUtils.deepClone(config.data),
+    )
+    config.headers[HttpConfigEnum.VERSION] = 'v3'
+    config.headers[HttpConfigEnum.TENANT_ID] = 1
     if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.Authorization = token
+      config.headers[HttpConfigEnum.TOKEN] = token
     }
     return config
   },
