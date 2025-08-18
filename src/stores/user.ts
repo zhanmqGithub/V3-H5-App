@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 export const useUserStore = defineStore('user-store', {
-  state: (): UserStoreState => ({
+  state: (): UserStore => ({
     token: '',
     userInfo: {},
     tabBarActive: 'storeroom-view',
     departs: [],
   }),
   getters: {
-    isLogin: (state: UserStoreState) => !!state.token,
+    isLogin: (state: UserStore) => !!state.token,
   },
   actions: {
     setToken(token: string) {

@@ -1,9 +1,9 @@
 /**
  * 用户全局存储
  */
-interface UserStoreState {
+interface UserStore {
   token: string
-  userInfo: UserInfo | Record<string, unknown>
+  userInfo: Nullable<UserInfo>
   tabBarActive: string
   departs: Depart[]
 }

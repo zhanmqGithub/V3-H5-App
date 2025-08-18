@@ -23,14 +23,18 @@ const router = useRouter()
  * 获取当前路由实例
  */
 const route = useRoute()
-
+/**
+ * 用户全局存储
+ */
+const userStore = useUserStore()
+router.replace(userStore.tabBarActive)
 /**
  * 记录返回按钮触发时间
  */
 let backbuttonTriggerTime: number = 0
 onPlusready(() => {
   plus.navigator.setStatusBarStyle('dark')
-  plus.navigator.setStatusBarBackground('#FFFFFF')
+  plus.navigator.setStatusBarBackground('#f4f5fa')
   // 监听返回键事件
   plus.key.addEventListener('backbutton', (e) => {
     console.log('backbutton', e)
@@ -53,7 +57,7 @@ preventZoom()
  * varlet 全局样式变量
  */
 const varletGlobalStyleVars = ref({
-  '--bottom-navigation-item-active-background-color': '#ebf1fa',
+  '--bottom-navigation-item-active-background-color': '#ebebeb',
   '--bottom-navigation-background-color': '#ffffff',
   '--bottom-navigation-height': '3.75rem',
   '--app-bar-title-font-size': '1.25rem',
@@ -68,10 +72,6 @@ const varletGlobalStyleVars = ref({
   '--table-tbody-td-text-align': 'center',
   '--field-decorator-line-border-radius': '1rem',
 })
-/**
- * 用户全局存储
- */
-const userStore = useUserStore()
 /**
  * TabBar 激活项 切换时间
  * @param active
@@ -153,8 +153,8 @@ onUnmounted(() => {
       round
       fixed
       placeholder
-      active-color="#3673c8"
-      inactive-color="#98a1ac"
+      active-color="#000000"
+      inactive-color="#999999"
       v-model:active="userStore.tabBarActive"
       @change="handleChangeTabBar"
     >

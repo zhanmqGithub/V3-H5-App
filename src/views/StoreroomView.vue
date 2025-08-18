@@ -56,7 +56,18 @@ const menuList = reactive<Menu[]>([
 
 <template>
   <div>
-    <NavBar title="库房" :back="false"></NavBar>
+    <NavBar title="库房" :back="false">
+      <template #right>
+        <var-menu>
+          <var-icon name="dots-vertical" color="#000000" size="24" />
+          <template #menu>
+            <var-cell ripple>选项卡</var-cell>
+            <var-cell ripple>选项卡</var-cell>
+            <var-cell ripple>选项卡</var-cell>
+          </template>
+        </var-menu>
+      </template>
+    </NavBar>
     <MenuList :menuList="menuList"></MenuList>
   </div>
 </template>

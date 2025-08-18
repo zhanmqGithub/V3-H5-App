@@ -6,10 +6,6 @@ import { z } from 'zod'
 import { randomImage, login } from '@/api/login'
 import type { LoginParam } from '@/api/login'
 import { Form, Snackbar } from '@varlet/ui'
-import { onPlusready } from '@/utils/document-utils'
-onPlusready(() => {
-  plus.navigator.setStatusBarBackground('#f4f5fa')
-})
 const router = useRouter()
 const userStore = useUserStore()
 /**
@@ -59,7 +55,6 @@ async function handleLogin() {
   } catch (error) {
     console.log('error', error)
     handleRandomImage()
-    loginParam.captcha = ''
   }
 }
 /**
@@ -72,8 +67,12 @@ const verificationCode = ref<string>(
  * 获取验证码
  */
 const handleRandomImage = async (): Promise<void> => {
-  loginParam.checkKey = new Date().getTime() + Math.random().toString(36).slice(-4)
-  verificationCode.value = await randomImage(loginParam.checkKey)
+  try {
+    loginParam.checkKey = new Date().getTime() + Math.random().toString(36).slice(-4)
+    verificationCode.value = await randomImage(loginParam.checkKey)
+  } finally {
+    loginParam.captcha = ''
+  }
 }
 handleRandomImage()
 </script>

@@ -25,7 +25,7 @@ import eruda from 'eruda'
  * 非生产环境开启 eruda （控制台工具）
  */
 if (import.meta.env.VITE_CONSOLE_WINDOW === 'true') {
-  console.log(import.meta, new URL('/src/assets/images/logo.png', import.meta.url).href)
+  console.log('import.meta ', import.meta)
   eruda.init({
     useShadowDom: true,
     defaults: {
