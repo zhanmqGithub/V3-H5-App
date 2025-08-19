@@ -15,9 +15,11 @@ declare module 'vue' {
     VarBottomNavigation: typeof import('@varlet/ui')['_BottomNavigationComponent']
     VarBottomNavigationItem: typeof import('@varlet/ui')['_BottomNavigationItemComponent']
     VarButton: typeof import('@varlet/ui')['_ButtonComponent']
+    VarCard: typeof import('@varlet/ui')['_CardComponent']
     VarCell: typeof import('@varlet/ui')['_CellComponent']
     VarChip: typeof import('@varlet/ui')['_ChipComponent']
     VarDivider: typeof import('@varlet/ui')['_DividerComponent']
+    VarEllipsis: typeof import('@varlet/ui')['_EllipsisComponent']
     VarForm: typeof import('@varlet/ui')['_FormComponent']
     VarIcon: typeof import('@varlet/ui')['_IconComponent']
     VarImage: typeof import('@varlet/ui')['_ImageComponent']
@@ -26,6 +28,10 @@ declare module 'vue' {
     VarPaper: typeof import('@varlet/ui')['_PaperComponent']
     VarSpace: typeof import('@varlet/ui')['_SpaceComponent']
     VarStyleProvider: typeof import('@varlet/ui')['_StyleProviderComponent']
+    VarTab: typeof import('@varlet/ui')['_TabComponent']
+    VarTabItem: typeof import('@varlet/ui')['_TabItemComponent']
     VarTable: typeof import('@varlet/ui')['_TableComponent']
+    VarTabs: typeof import('@varlet/ui')['_TabsComponent']
+    VarTabsItems: typeof import('@varlet/ui')['_TabsItemsComponent']
   }
 }

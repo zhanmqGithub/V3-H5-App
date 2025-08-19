@@ -109,7 +109,7 @@ handleRandomImage()
             />
           </template>
         </var-input>
-        <var-space :wrap="false">
+        <var-space :wrap="false" align="center">
           <var-input
             v-model="loginParam.captcha"
             variant="outlined"
@@ -124,8 +124,7 @@ handleRandomImage()
             :src="verificationCode"
             width="9rem"
             height="3rem"
-            radius="0.5rem"
-            class="mt-1"
+            radius="0.75rem"
             @click="handleRandomImage"
           />
         </var-space>

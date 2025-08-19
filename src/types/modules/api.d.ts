@@ -24,37 +24,21 @@ interface Result<T = unknown> {
   timestamp: number
 }
 
-interface Experiment<T> {
-  /**
-   * 标准
-   */
-  norm: string
-  /**
-   * 形式
-   */
-  form: string
-  /**
-   * 车型
-   */
-  vehicleModel: string
-  /**
-   * 排程时间
-   */
-  scheduleDate: string
-  /**
-   * 负责人
-   */
-  personInCharge: string
-  /**
-   * 试验号
-   */
-  serialNumber: string
-  /**
-   * 厂家
-   */
-  manufacturers: string
-  /**
-   * 色彩
-   */
-  color: T
+/**
+ * 分页
+ */
+interface PageParams {
+  pageNo: number
+  pageSize: number
+}
+
+/**
+ * 分页返回值
+ */
+interface PageResult<T> {
+  current: number
+  pages: number
+  records: Array<T>
+  size: number
+  total: number
 }

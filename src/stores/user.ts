@@ -3,7 +3,7 @@ export const useUserStore = defineStore('user-store', {
   state: (): UserStore => ({
     token: '',
     userInfo: {},
-    tabBarActive: 'storeroom-view',
+    tabBarActive: 'home-view',
     departs: [],
   }),
   getters: {

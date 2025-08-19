@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       redirect: '/login-view',
-      name: 'home-view',
+      name: 'index-view',
     },
     {
       path: '/todo-view',
@@ -25,29 +25,11 @@ const router = createRouter({
       },
     },
     {
-      path: '/order-view',
-      name: 'order-view',
-      component: () => import('@/views/OrderView.vue'),
-      meta: {
-        title: '订单',
-        showTabBar: true,
-      },
-    },
-    {
-      path: '/storeroom-view',
-      name: 'storeroom-view',
-      component: () => import('@/views/StoreroomView.vue'),
+      path: '/home-view',
+      name: 'home-view',
+      component: () => import('@/views/HomeView.vue'),
       meta: {
         title: '库房',
-        showTabBar: true,
-      },
-    },
-    {
-      path: '/schedule-view',
-      name: 'schedule-view',
-      component: () => import('@/views/ScheduleView.vue'),
-      meta: {
-        title: '排程',
         showTabBar: true,
       },
     },
@@ -67,15 +49,6 @@ const router = createRouter({
       component: LoginView,
       meta: {
         title: '登录',
-        showTabBar: false,
-      },
-    },
-    {
-      path: '/storeroom-view/action-form',
-      name: 'storeroom-view-action-form',
-      component: () => import('@/views/pages/storeroom/ActionForm.vue'),
-      meta: {
-        title: '库房-表单',
         showTabBar: false,
       },
     },
