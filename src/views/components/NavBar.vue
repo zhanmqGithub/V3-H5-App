@@ -12,7 +12,7 @@ const goBackIcon = new URL('/src/assets/images/components/nav-bar/back.png', imp
 const handleGoBack = (): void => {
   router.go(-1)
 }
-const statusbarHeight = ref<number>(10)
+const statusbarHeight = ref<number>(0)
 if (window.plus) {
   statusbarHeight.value = plus.navigator.getStatusbarHeight()
 }

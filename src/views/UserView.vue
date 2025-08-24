@@ -86,7 +86,7 @@ const basicInfoKeys = reactive<
       </template>
     </NavBar>
     <div class="pl-3 pr-3">
-      <var-paper :elevation="false" :radius="16" class="w-full p-2 mb-3">
+      <var-paper :elevation="false" :radius="16" class="w-full p-3 mb-3">
         <div class="flex justify-between items-center">
           <div class="flex justify-between items-center">
             <var-avatar :src="userInfo.avatar" :size="64" />
@@ -103,20 +103,6 @@ const basicInfoKeys = reactive<
         </div>
       </var-paper>
       <var-paper :elevation="false" :radius="16" class="w-full pt-4 pr-4 pb-2 pl-4">
-        <template v-for="key in basicInfoKeys" :key="key.field">
-          <div class="flex justify-between items-center pt-1 pb-1">
-            <span class="font-size-4 color-gray">{{ key.title }}</span>
-            <span class="font-size-4 color-black">{{ userInfo[key.field] }}</span>
-          </div>
-          <var-divider dashed />
-        </template>
-        <template v-for="key in basicInfoKeys" :key="key.field">
-          <div class="flex justify-between items-center pt-1 pb-1">
-            <span class="font-size-4 color-gray">{{ key.title }}</span>
-            <span class="font-size-4 color-black">{{ userInfo[key.field] }}</span>
-          </div>
-          <var-divider dashed />
-        </template>
         <template v-for="key in basicInfoKeys" :key="key.field">
           <div class="flex justify-between items-center pt-1 pb-1">
             <span class="font-size-4 color-gray">{{ key.title }}</span>

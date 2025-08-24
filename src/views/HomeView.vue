@@ -40,7 +40,7 @@ handleMenuArticlelist()
     <var-tabs-items v-model:active="active">
       <var-tab-item name="article" class="w-full pl-3 pr-3">
         <template v-for="article of articleList" :key="article.id">
-          <var-paper class="mt-3 mb-3" :elevation="1" ripple :radius="16">
+          <var-paper class="mt-3 mb-3" :elevation="false" ripple :radius="16">
             <var-card
               layout="row"
               :title="article.title"
