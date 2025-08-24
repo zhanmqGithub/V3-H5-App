@@ -32,15 +32,15 @@ handleMenuArticlelist()
 </script>
 
 <template>
-  <var-tabs v-model:active="active" sticky safe-area>
-    <var-tab name="article">文章</var-tab>
-    <var-tab name="task">任务</var-tab>
-  </var-tabs>
-  <var-tabs-items v-model:active="active">
-    <var-tab-item name="article">
-      <div class="w-full pl-2 pr-2" v-show="active === 'article'">
+  <div>
+    <var-tabs v-model:active="active" sticky safe-area color="#F4F4F4">
+      <var-tab name="article">文章</var-tab>
+      <var-tab name="task">任务</var-tab>
+    </var-tabs>
+    <var-tabs-items v-model:active="active">
+      <var-tab-item name="article" class="w-full pl-3 pr-3">
         <template v-for="article of articleList" :key="article.id">
-          <var-paper class="mt-2 mb-2" :elevation="1" ripple :radius="16">
+          <var-paper class="mt-3 mb-3" :elevation="1" ripple :radius="16">
             <var-card
               layout="row"
               :title="article.title"
@@ -48,15 +48,15 @@ handleMenuArticlelist()
               :src="article.imageHref"
             >
               <template #description>
-                <var-ellipsis class="pl-2 pr-2" :line-clamp="2" :tooltip="false">
+                <var-ellipsis class="pl-3 pr-3" :line-clamp="2" :tooltip="false">
                   {{ article.summary }}
                 </var-ellipsis>
               </template>
             </var-card>
           </var-paper>
         </template>
-      </div>
-    </var-tab-item>
-    <var-tab-item name="task"> 任务列表 </var-tab-item>
-  </var-tabs-items>
+      </var-tab-item>
+      <var-tab-item name="task"> 任务列表 </var-tab-item>
+    </var-tabs-items>
+  </div>
 </template>

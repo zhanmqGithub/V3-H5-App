@@ -30,7 +30,7 @@ export default defineConfig({
       // imports: ['vue', 'vue-router'], // 自动导入 vue vue-router
       // dts: './src/types/auto-import.d.ts', // 针对ts生成自动导入包的全局类型文件
     }),
-    visualizer({ open: true }),
+    visualizer({ open: false }),
   ],
   resolve: {
     alias: {

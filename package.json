@@ -26,6 +26,7 @@
     "@varlet/import-resolver": "^3.11.1",
     "@varlet/ui": "^3.11.1",
     "axios": "^1.11.0",
+    "dayjs": "^1.11.13",
     "eruda": "^3.4.3",
     "less": "^4.4.0",
     "md5": "^2.3.0",

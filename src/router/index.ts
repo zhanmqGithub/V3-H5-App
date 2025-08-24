@@ -13,15 +13,16 @@ const router = createRouter({
       name: 'index-view',
     },
     {
-      path: '/todo-view',
-      name: 'todo-view',
+      path: '/app-plus',
+      name: 'app-plus',
       // route level code-splitting
-      // this generates a separate chunk (Todo.[hash].js) for this route
+      // this generates a separate chunk (AppPlus.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('@/views/TodoView.vue'),
+      component: () => import('@/views/AppPlus.vue'),
       meta: {
-        title: '待办',
+        title: '原生安卓',
         showTabBar: true,
+        hasNavBar: false,
       },
     },
     {
@@ -29,8 +30,9 @@ const router = createRouter({
       name: 'home-view',
       component: () => import('@/views/HomeView.vue'),
       meta: {
-        title: '库房',
+        title: '主页',
         showTabBar: true,
+        hasNavBar: false,
       },
     },
     {
@@ -40,6 +42,7 @@ const router = createRouter({
       meta: {
         title: '我的',
         showTabBar: true,
+        hasNavBar: true,
       },
     },
     // 以下为非TabBar页面
@@ -50,6 +53,27 @@ const router = createRouter({
       meta: {
         title: '登录',
         showTabBar: false,
+        hasNavBar: false,
+      },
+    },
+    {
+      path: '/plus-api',
+      name: 'plus-api',
+      component: () => import('@/views/pages/plus-api/PlusApi.vue'),
+      meta: {
+        title: '原生Api',
+        showTabBar: false,
+        hasNavBar: true,
+      },
+    },
+    {
+      path: '/about-app',
+      name: 'about-app',
+      component: () => import('@/views/pages/AboutApp.vue'),
+      meta: {
+        title: '关于App',
+        showTabBar: false,
+        hasNavBar: false,
       },
     },
   ],
